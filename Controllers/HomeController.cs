@@ -23,10 +23,15 @@ namespace TPLOCAL1.Controllers
                 {
                     case "OpinionList":
                         //TODO : code reading of the xml files provide
-                        return View(id);
+                        string xmlPath = Path.Combine(
+                        Directory.GetCurrentDirectory(), "XmlFile", "DataAvis.xml");
+                        var opinionReader = new OpinionList();
+                        List<Opinion> opinions = opinionReader.GetAvis(xmlPath);
+
+                        return View("OpinionList", opinions);
                     case "Form":
                         //TODO : call the Form view with data model empty
-                        return View(id);
+                        return View("Form", new FormModel());
                     default:
                         //retourn to the Index view (see routing in Program.cs)
                         return View();
@@ -37,12 +42,26 @@ namespace TPLOCAL1.Controllers
 
         //methode to send datas from form to validation page
         [HttpPost]
-        public ActionResult ValidationFormulaire(/*model*/)
+        [ValidateAntiForgeryToken]
+        public ActionResult ValidationFormulaire(FormModel model)
         {
             //TODO : test if model's fields are set
             //if not, display an error message and stay on the form page
             //else, call ValidationForm with the datas set by the user
-            return null;
+            if (model.StartDate.HasValue &&
+                model.StartDate.Value >= new DateTime(2021, 1, 1))
+            {
+                ModelState.AddModelError(
+                    nameof(model.StartDate),
+                    "La date doit être antérieure au 01/01/2021.");
+            }
+
+            if (!ModelState.IsValid)
+            {
+                return View("Form", model);
+            }
+
+            return View("ValidationFormulaire", model);
 
         }
     }

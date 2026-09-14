@@ -1,0 +1,95 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 30px;
+    font-family: Arial, sans-serif;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    gap: 50px;
+    margin-bottom: 35px;
+}
+
+.image {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+}
+
+h1 {
+    flex: 1;
+    text-align: center;
+}
+
+.page {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+nav {
+    width: 190px;
+    padding: 15px;
+    background-color: #8c014c;
+    color: white;
+    flex-shrink: 0;
+}
+
+nav li {
+    margin: 15px 0;
+}
+
+nav a {
+    color: chocolate;
+}
+
+main {
+    flex: 1;
+}
+
+.form-table {
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+.form-table caption {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.form-table td,
+.form-table th {
+    border: 1px solid #555;
+    padding: 6px;
+}
+
+.form-table input,
+.form-table select,
+.form-table textarea {
+    width: 300px;
+    padding: 5px;
+}
+
+.field-validation-error,
+.validation-summary-errors {
+    color: #c00000;
+}
+
+.opinion-yes {
+    color: green;
+    font-weight: bold;
+}
+
+.opinion-no {
+    color: red;
+    font-weight: bold;
+}
+
+.confirmation {
+    text-align: center;
+    font-weight: bold;
+}

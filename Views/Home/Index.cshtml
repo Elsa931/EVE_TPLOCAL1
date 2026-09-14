@@ -1,3 +1,50 @@
-﻿<header>
-    <h1>Welcome to the HN .Net MVC pratical work</h1>
-</header>
+﻿@{
+    ViewData["Title"] = "HN - TP LOCAL";
+}
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewData["Title"]</title>
+    <link rel="stylesheet" href="~/resources/Site.css" />
+</head>
+<body>
+    <header>
+        <img src="~/resources/GroupeHN.png"
+             class="image"
+             alt="Logo Groupe HN" />
+
+        <h1>Bienvenue dans le TP HN</h1>
+    </header>
+
+    <div class="page">
+        <nav>
+            <ul>
+                <li>
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       asp-route-id="Form">
+                        Remplir le formulaire
+                    </a>
+                </li>
+                <li>
+                    <a asp-controller="Home"
+                       asp-action="Index"
+                       asp-route-id="OpinionList">
+                        Liste des avis
+                    </a>
+                </li>
+            </ul>
+        </nav>
+
+        <main>
+            <a asp-controller="Home"
+               asp-action="Index"
+               asp-route-id="Form">
+                Remplir le formulaire
+            </a>
+        </main>
+    </div>
+</body>
+</html>

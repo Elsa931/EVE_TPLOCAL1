@@ -1,0 +1,57 @@
+@model IEnumerable<TPLOCAL1.Models.Opinion>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8" />
+    <title>Liste des avis</title>
+    <link rel="stylesheet" href="~/resources/Site.css" />
+</head>
+<body>
+<header>
+    <img src="~/resources/GroupeHN.png" class="image" alt="Logo Groupe HN" />
+    <h1>Liste des avis</h1>
+</header>
+
+<div class="page">
+    <nav>
+        <ul>
+            <li><a href="/">Accueil</a></li>
+            <li>
+                <a asp-action="Index" asp-route-id="Form">
+                    Remplir le formulaire
+                </a>
+            </li>
+        </ul>
+    </nav>
+
+    <main>
+        <table class="form-table">
+            <caption>Liste des avis</caption>
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prénom</th>
+                    <th>Avis donné</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var opinion in Model)
+                {
+                    bool given = opinion.OpinionGiven
+                        .Equals("O", StringComparison.OrdinalIgnoreCase);
+
+                    <tr>
+                        <td>@opinion.LastName</td>
+                        <td>@opinion.FirstName</td>
+                        <td class="@(given ? "opinion-yes" : "opinion-no")">
+                            @(given ? "Oui" : "Non")
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </main>
+</div>
+</body>
+</html>
